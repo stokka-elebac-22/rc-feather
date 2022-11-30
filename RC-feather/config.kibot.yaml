@@ -23,6 +23,11 @@ variants:
     pre_transform: _rot_footprint
 
 outputs:
+  - name: classic_netlist
+    comment: Schematic netlist in KiCad format
+    type: netlist
+    dir: Export
+    
   - name: 'Costs'
     comment: "Components costs spreadsheet"
     type: kicost
@@ -38,7 +43,7 @@ outputs:
       aggregate:
         - file: tests/data/multipart2.xml
           number: 1000
-          
+
   - name: 'print_sch'
     comment: "Print schematic (PDF)"
     type: pdf_sch_print
