@@ -11,6 +11,7 @@ filters:
         regex: '^C\d+'
 
 preflight:
+  update_xml: true
   set_text_variables:
     - name: "MYVAR"
       text: "tests/data"
@@ -27,7 +28,7 @@ outputs:
     comment: Schematic netlist in KiCad format
     type: netlist
     dir: Export
-    
+
   - name: 'Costs'
     comment: "Components costs spreadsheet"
     type: kicost
