@@ -1,0 +1,9 @@
+(sym_lib_table
+  (lib (name "particle-boards")(type "Legacy")(uri "${KIPRJMOD}/particle-boards.lib")(options "")(descr "")(disabled))
+  (lib (name "particle")(type "Legacy")(uri "${KIPRJMOD}/particle.lib")(options "")(descr ""))
+  (lib (name "SSD1306_OLED-0.91-128x32")(type "Legacy")(uri "${KIPRJMOD}/KiCad-SSD1306_OLED-0.91-128x32/SSD1306_OLED-0.91-128x32.lib")(options "")(descr ""))
+  (lib (name "nrfmicro")(type "Legacy")(uri "${KIPRJMOD}/nrfmicro.lib")(options "")(descr ""))
+  (lib (name "usini_sensors")(type "Legacy")(uri "${KIPRJMOD}/usini_kicad_sensors-main/usini_sensors.lib")(options "")(descr ""))
+  (lib (name "LB1948MC-AH")(type "Legacy")(uri "${KIPRJMOD}/LB1948MC-AH/LB1948MC-AH.lib")(options "")(descr ""))
+  (lib (name "pa1010d")(type "Legacy")(uri "${KIPRJMOD}/pa1010d/symbols/gps.lib")(options "")(descr ""))
+)

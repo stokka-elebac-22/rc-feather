@@ -1,0 +1,69 @@
+name: "KiCad CI/CD for RC-feather"
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    paths:
+      - 'RC-feather/*.sch'
+      - 'RC-feather/*.kicad_pcb'
+      - 'RC-feather/*.kibot.yaml'
+      - 'RC-feather/Makefile'
+      - '.github/workflows/rc_feather.yml'
+  pull_request:
+    paths:
+      - 'RC-feather/*.sch'
+      - 'RC-feather/*.kicad_pcb'
+      - 'RC-feather/*.kibot.yaml'
+      - 'RC-feather/Makefile'
+      - '.github/workflows/rc_feather.yml'
+  
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  Fabrication:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: INTI-CMNB/KiBot@v2_dk6
+      with:
+        # Required - kibot config file
+        config: RC-feather/config.kibot.yaml
+        # optional - prefix to output defined in config
+        dir: RC-feather/Fabrication
+        # optional - schematic file
+        schema: 'RC-feather/RC_feather.kicad_sch'
+        # optional - PCB design file
+        board: 'RC-feather/RC_feather.kicad_pcb'
+    - name: Retrieve results
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v3
+      with:
+        name: Fabrication
+        path: |
+          RC-feather/Fabrication/
+        if-no-files-found: warn
+    - name: Prepare release files
+      run: |
+        cd /home/runner/work/rc-feather/rc-feather/RC-feather/Fabrication
+        cp JLCPCB -R /tmp/Plot
+        cp BoM/*.html /tmp/
+        cp 3D/*.step /tmp/RC-feather-PCB.step
+        cp Schematic.pdf /tmp/Schematic-RC-feather-PCB.pdf
+        cd /tmp
+        mv Plot/*.zip .
+        zip -r Plot-RC-feather-PCB.zip Plot
+        echo prepared for release
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with: 
+        files: |
+          /tmp/*.zip
+          /tmp/Schematic-RC-feather-PCB.pdf
+          /tmp/*.html
+          /tmp/RC-feather-PCB.step
+        prerelease: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+

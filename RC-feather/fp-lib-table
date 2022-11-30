@@ -1,0 +1,9 @@
+(fp_lib_table
+  (lib (name "Adafruit_FeatherWing")(type "KiCad")(uri "${KIPRJMOD}/Adafruit_FeatherWing.pretty")(options "")(descr "")(disabled))
+  (lib (name "KiCad-SSD1306_OLED-0")(type "KiCad")(uri "${KIPRJMOD}/KiCad-SSD1306_OLED-0.91-128x32")(options "")(descr ""))
+  (lib (name "Inductor")(type "KiCad")(uri "C:/Users/daniel.hansten/Kicad/Horti-motor-PCB/Inductor.pretty")(options "")(descr ""))
+  (lib (name "usini_sensors")(type "KiCad")(uri "${KIPRJMOD}/usini_kicad_sensors-main/usini_sensors.pretty")(options "")(descr ""))
+  (lib (name "LB1948MC-AH")(type "KiCad")(uri "${KIPRJMOD}/LB1948MC-AH")(options "")(descr ""))
+  (lib (name "nrfmicro")(type "KiCad")(uri "${KIPRJMOD}/nrfmicro.pretty")(options "")(descr ""))
+  (lib (name "pa1010d")(type "KiCad")(uri "${KIPRJMOD}/pa1010d/footprints/GPS.pretty")(options "")(descr ""))
+)
